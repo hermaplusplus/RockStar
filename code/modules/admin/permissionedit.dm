@@ -317,7 +317,7 @@
 		//if a player was tempminned before having a permanent change made to their rank they won't yet be in the db
 		var/old_rank
 		var/datum/db_query/query_admin_in_db = SSdbcore.NewQuery(
-			"SELECT rank FROM [format_table_name("admin")] WHERE ckey = :ckey",
+			"SELECT `rank` FROM `[format_table_name("admin")]` WHERE ckey = :ckey",
 			list("ckey" = admin_ckey)
 		)
 		if(!query_admin_in_db.warn_execute())
