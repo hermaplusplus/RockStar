@@ -232,7 +232,7 @@
 			return FALSE
 		qdel(query_admin_in_db)
 		var/datum/db_query/query_add_admin = SSdbcore.NewQuery(
-			"INSERT INTO `[format_table_name("admin")]` (`ckey`, `rank`) VALUES (:ckey, 'NEW ADMIN')",
+			"INSERT INTO `[format_table_name("admin")]` (ckey, `rank`) VALUES (:ckey, 'NEW ADMIN')",
 			list("ckey" = .)
 		)
 		if(!query_add_admin.warn_execute())
@@ -340,7 +340,7 @@
 		if(!query_rank_in_db.NextRow())
 			QDEL_NULL(query_rank_in_db)
 			var/datum/db_query/query_add_rank = SSdbcore.NewQuery(
-				"INSERT INTO `[format_table_name("admin_ranks")]` (`rank`, `flags`, `exclude_flags`, `can_edit_flags`) VALUES (:new_rank, '0', '0', '0')",
+				"INSERT INTO [format_table_name("admin_ranks")] (`rank`, flags, exclude_flags, can_edit_flags) VALUES (:new_rank, '0', '0', '0')",
 				list("new_rank" = new_rank)
 			)
 			if(!query_add_rank.warn_execute())
