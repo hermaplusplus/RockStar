@@ -77,7 +77,7 @@
 			output += "<hr style='background:#000000; border:0; height:1px'>"
 		qdel(query_check_admin_errors)
 		output += "<h3>Unused ranks</h3>"
-		var/datum/db_query/query_check_unused_rank = SSdbcore.NewQuery("SELECT [format_table_name("admin_ranks")].rank, flags, exclude_flags, can_edit_flags FROM [format_table_name("admin_ranks")] LEFT JOIN [format_table_name("admin")] ON [format_table_name("admin")].rank = [format_table_name("admin_ranks")].rank WHERE [format_table_name("admin")].rank IS NULL")
+		var/datum/db_query/query_check_unused_rank = SSdbcore.NewQuery("SELECT `[format_table_name("admin_ranks")].rank`, `flags`, `exclude_flags`, `can_edit_flags` FROM `[format_table_name("admin_ranks")]` LEFT JOIN `[format_table_name("admin")]` ON `[format_table_name("admin")].rank` = `[format_table_name("admin_ranks")].rank` WHERE `[format_table_name("admin")].rank` IS NULL")
 		if(!query_check_unused_rank.warn_execute())
 			qdel(query_check_unused_rank)
 			return
@@ -232,7 +232,7 @@
 			return FALSE
 		qdel(query_admin_in_db)
 		var/datum/db_query/query_add_admin = SSdbcore.NewQuery(
-			"INSERT INTO [format_table_name("admin")] (ckey, rank) VALUES (:ckey, 'NEW ADMIN')",
+			"INSERT INTO `[format_table_name("admin")]` (`ckey`, `rank`) VALUES (:ckey, 'NEW ADMIN')",
 			list("ckey" = .)
 		)
 		if(!query_add_admin.warn_execute())
@@ -340,7 +340,7 @@
 		if(!query_rank_in_db.NextRow())
 			QDEL_NULL(query_rank_in_db)
 			var/datum/db_query/query_add_rank = SSdbcore.NewQuery(
-				"INSERT INTO [format_table_name("admin_ranks")] (rank, flags, exclude_flags, can_edit_flags) VALUES (:new_rank, '0', '0', '0')",
+				"INSERT INTO `[format_table_name("admin_ranks")]` (`rank`, `flags`, `exclude_flags`, `can_edit_flags`) VALUES (:new_rank, '0', '0', '0')",
 				list("new_rank" = new_rank)
 			)
 			if(!query_add_rank.warn_execute())
