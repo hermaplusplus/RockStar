@@ -77,7 +77,7 @@
 			output += "<hr style='background:#000000; border:0; height:1px'>"
 		qdel(query_check_admin_errors)
 		output += "<h3>Unused ranks</h3>"
-		var/datum/db_query/query_check_unused_rank = SSdbcore.NewQuery("SELECT `[format_table_name("admin_ranks")]'.'rank`, `flags`, `exclude_flags`, `can_edit_flags` FROM [format_table_name("admin_ranks")] LEFT JOIN `[format_table_name("admin")]` ON `[format_table_name("admin")]'.'rank` = `[format_table_name("admin_ranks")]'.'rank` WHERE `[format_table_name("admin")]'.'rank` IS NULL")
+		var/datum/db_query/query_check_unused_rank = SSdbcore.NewQuery("SELECT `[format_table_name("admin_ranks")]'.'rank`, flags, exclude_flags, can_edit_flags FROM [format_table_name("admin_ranks")] LEFT JOIN `[format_table_name("admin")]` ON `[format_table_name("admin")]'.'rank` = `[format_table_name("admin_ranks")]'.'rank` WHERE `[format_table_name("admin")]'.'rank` IS NULL")
 		if(!query_check_unused_rank.warn_execute())
 			qdel(query_check_unused_rank)
 			return
