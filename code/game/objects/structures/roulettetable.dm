@@ -26,7 +26,7 @@
 	bound_width = 64
 	var/working = FALSE
 	var/result
-	var/spin_timer = 30
+	var/spin_timer = 40
 
 /obj/structure/roulettetable/wrench_act(mob/living/user, obj/item/I)
 	if(working)
@@ -48,6 +48,7 @@
 	visible_message("<span class='notice'>[user] spins the roulette wheel!</span>")
 	working = TRUE
 	update_icon()
+	playsound(src, 'sound/f13machines/roulette_wheel.ogg', 50, 1)
 
 	spawn(spin_timer)
 		result = rand(0,36)
