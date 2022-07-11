@@ -816,6 +816,7 @@
 	spread = 1.2
 	slowdown = 0.05
 	extra_damage = 25
+	extra_penetration = 0.1
 	can_scope = TRUE
 	scope_state = "scope_short"
 	scope_x_offset = 4
