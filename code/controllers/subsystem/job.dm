@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(job)
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list()	//Don't read this list, use GetLateJoinTurfs() instead
 
-	var/overflow_role = "Wastelander" //CHANGE
+	var/overflow_role = "Compatibility" //CHANGE
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 
@@ -24,7 +24,10 @@ SUBSYSTEM_DEF(job)
 	if(CONFIG_GET(flag/load_jobs_from_txt))
 		LoadJobs()
 	generate_selectable_species()
-	set_overflow_role(CONFIG_GET(string/overflow_job))
+	if(SSmaptype.maptype == "reno") // Reno override
+		set_overflow_role("Tourist")
+	else
+		set_overflow_role(CONFIG_GET(string/overflow_job))
 	return ..()
 
 /datum/controller/subsystem/job/proc/set_overflow_role(new_overflow_role)

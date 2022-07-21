@@ -1050,4 +1050,23 @@
 	ADD_TRAIT(H, TRAIT_IRONFIST, src)
 	ADD_TRAIT(H, TRAIT_HARD_YARDS, src)
 
+/*--------------------------------------------------------------*/
+/*            WASTELAND - RENO    COMPATIBILITY ROLE            */
+/* This role should not be joinable, and preferably not visible */
 
+/datum/job/citizens/f13compatibility
+	title = "Compatibilty"
+	flag = F13TOURIST
+	faction = FACTION_CITIZENS
+	total_positions = 0
+	spawn_positions = 0
+	description = "This role is for compatibility between Wasteland and New Reno maps."
+	supervisors = "the mainframe"
+	selection_color = "#000000"
+	exp_requirements = EXP_TYPE_CITIZENS
+
+	outfit = /datum/outfit/job/citizens/f13tourist
+
+	loadout_options = list(
+	/datum/outfit/loadout/tourist,
+	)

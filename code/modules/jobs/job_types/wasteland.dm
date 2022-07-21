@@ -1384,3 +1384,27 @@ datum/job/wasteland/f13dendoctor
 		/obj/item/warpaint_bowl = 1,
 		/obj/item/reagent_containers/pill/patch/healpoultice = 2
 	)
+
+/*--------------------------------------------------------------*/
+/*            WASTELAND - RENO    COMPATIBILITY ROLE            */
+/* This role should not be joinable, and preferably not visible */
+
+/datum/job/wasteland/f13wastelander
+	title = "Compatibility"
+	flag = F13WASTELANDER
+	faction = FACTION_WASTELAND
+	total_positions = 0
+	spawn_positions = 0
+	description = "This role is for compatibility between Wasteland and New Reno maps."
+	supervisors = "the mainframe"
+	selection_color = "#000000"
+
+	outfit = /datum/outfit/job/wasteland/f13wastelander
+
+	access = list()
+	minimal_access = list()
+	matchmaking_allowed = list(
+	)
+	loadout_options = list(
+	/datum/outfit/loadout/vault_refugee,
+	)
